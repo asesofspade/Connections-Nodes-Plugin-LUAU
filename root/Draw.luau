@@ -1,8 +1,10 @@
 local Draw = {}
 local UserInputService = game:GetService("UserInputService")
-local ZoomSystem = require(script.Zoom)
-local DragWorkspace = require(script.Drag)
-local NodesModule = require(script.Nodes)
+local DrawActions = script.Parent.DrawActions
+
+local ZoomSystem = require(DrawActions.Zoom)
+local DragWorkspace = require(DrawActions.Drag)
+local NodesModule = require(DrawActions.Nodes)
 
 Draw.Nodes = {}
 Draw.Lines = {}
