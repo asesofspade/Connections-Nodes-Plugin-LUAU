@@ -1,0 +1,21 @@
+local plugin = plugin
+local toolbar = plugin:CreateToolbar("Mapa de Conexiones")
+local button = toolbar:CreateButton("Abrir Mapa", "Abre la GUI de nodos", "")
+
+local PluginFolder = script.Parent
+local Config = require(PluginFolder:WaitForChild("Config"))
+local Draw = require(PluginFolder:WaitForChild("Draw"))
+local Watcher = require(PluginFolder:WaitForChild("Watcher"))
+
+Draw:Init(Config)
+Watcher:Init(Config)
+
+local gui
+button.Click:Connect(function()
+    if gui then
+        gui.Enabled = not gui.Enabled
+    else
+        gui = Draw:CreateGUI(plugin)
+        Watcher:Start(gui:GetChildren()[1], Draw)
+    end
+end)
